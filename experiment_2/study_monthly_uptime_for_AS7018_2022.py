@@ -1,20 +1,6 @@
-import statsmodels.api as sm
 import sys
-import json
-from infer_sa_prefixes import *
-from pprint import pprint as pprint
-import matplotlib.pyplot as plt
-import numpy as np
-
-# Reads content from a json file
-def read_json(jsonfilename):
-    with open(jsonfilename, 'r') as jsonfile:
-        return json.load(jsonfile)
-
-# Writes content to a json file
-def write_json(jsonfilename, content):
-    with open(jsonfilename, 'w+') as fp:
-        json.dump(content, fp, indent=4)
+sys.path.append('imc-repro23-inferring/experiment_2/')
+from __exp2_lib__ import *
 
 def read_sa_prefixes(month, peer):
     to_write = dict()
