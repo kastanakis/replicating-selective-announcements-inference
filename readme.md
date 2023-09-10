@@ -16,37 +16,62 @@ In the second research experiment, we infer the Export Routing Policies of diffe
 ## Data Collection
 To collect public routing data for this analysis, head to the **data_collection/** folder and run the respective _route_collection script (i.e., hourly, daily, monthly, yearly). E.g.,
 
+```python3 hourly_route_collection.py 22```
+
+would collect the routing tables of the designated vantage points on the 15th of January, 2023 at 22:00.
+
 ```python3 daily_route_collection.py 22```
 
-would collect the routing tables of the designated vantage points on the 22nd of January, 2023. By running: 
+would collect the routing tables of the designated vantage points on the 22nd of January, 2023 at 00:00. By running: 
 
 ```python3 monthly_route_collection.py 05```
 
-one can download the respective routing tables on the 1st of May (5), 2022.
+one can download the routing tables of the designated vantage points on the 1st of May, 2022 at 00:00.
+
+Finally, by running:
+
+```python3 yearly_route_collection.py 2014```
+
+one can download the respective routing tables of the designated vantage points on the 1st of April, 2014 at 00:00
+
+The output is going to be directed to the **data_collection/output/routing_tables/** folder.
 
 ## Experiment 1: What is the local preference setting among provider, customer and peer routes? 
 
 
-## Experiment 2: Do customers advertise their prefixes selectively to their providers? 
-To extract the SA prefixes from the collected routing tables, run the following script:
+## Experiment 2: Do ASes advertise their prefixes selectively to their providers and peers respectively? 
+To extract the SA prefixes from the collected routing tables, run the following script with the respective year as an argument (e.g., we collect the SA prefixes for 2017):
 
 ```python3 collect_sa_prefixes_for_2003_2023.py 2017```
 
-To study the prevalence ofSA prefixes across different networks, run the following script:
+The results are written into the **experiment_2/sa_prefixes/** folder.
+
+To study the prevalence of customer SA prefixes across different ASes, run the following script:
 
 ```python3 study_prevalence_of_sa_prefixes_for_2003_2023.py 2017```
+
+The results are written into the **experiment_2/prevalence/** folder.
 
 To study the persistence of SA prefixes over different years, run the following script:
 
 ```python3 study_persistence_of_sa_prefixes_for_2003_2023.py 2017```
 
+The results are written into the **experiment_2/persistence/** folder.
+
 To verify the inference of SA prefixes, run the following script:
 
 ```python3 verify_sa_prefixes_for_2003_2023.py 2017```
+
+The results are written into the **experiment_2/verification/** folder.
 
 To study the causes of SA prefixes, run the following script:
 
 ```python3 study_causes_of_sa_prefixes.py 2017```
 
+The results are printed into the console.
 
- 
+To study the prevalence of peer SA prefixes across different ASes, run the following script:
+
+```python3 study_export_to_peer.py 2017```
+
+The results are written into the **experiment_2/export2peer/** folder.
