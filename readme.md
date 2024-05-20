@@ -37,7 +37,16 @@ one can download the respective routing tables of the designated vantage points 
 The output is going to be directed to the **data_collection/output/routing_tables/** folder.
 
 ## Experiment 1: What is the local preference setting among provider, customer and peer routes? 
+**Step 1: Compile a list of relationship-tagging BGP communities.**
+We manually compiled the BGP communities values and their corresponding meanings for 11 of the ASes listed in Table 2, and
+we keep the communities that are used to annotate relationship types. The documentation of the corresponding BGP communities
+have been extracted from IRR and the websites of AS operators. 
 
+**Step 2: Map community to AS relationship.**
+After collecting a list of relationship-tagging BGP communities, we parse BGP updates from RouteViews and RIPE RIS and we search for routes
+annotated with one or more of the collected BGP communities. We then map the attached communities to a link in the corresponding
+AS path by matching the first 16-bits of a relationship-tagging BGP communities value with an AS number in the path. More details
+on this methodology are described in the Appendix of Wang and Gao IMC'03 paper.
 
 ## Experiment 2: Do ASes advertise their prefixes selectively to their providers and peers respectively? 
 To extract the SA prefixes from the collected routing tables, run the following script with the respective year as an argument (e.g., we collect the SA prefixes for 2017):
