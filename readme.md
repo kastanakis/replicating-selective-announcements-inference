@@ -37,7 +37,9 @@ one can download the respective routing tables of the designated vantage points 
 The output is going to be directed to the **data_collection/output/routing_tables/** folder.
 
 ## Experiment 1: What is the local preference setting among provider, customer and peer routes? 
+To select the best path among available routes to an IP prefix, the most important metric is the "locpref" attribute, which indicates route preference. However, since locpref is non-transitive, it can't be obtained through standard route collectors. Instead, we replicated the methodology of Wang and Gao by using Looking Glass (LG) servers that provide direct access to BGP routers. 
 
+We compiled a list of such servers and found locpref values for only 10 out of 76 ASes. Our results show a lower consistency (83%) with the expected locpref allocations based on AS relationships compared to the 2003 study (over 99%). This suggests changes in peering strategies over time. Additionally, we complemented our data with locpref values from Internet Routing Registries (IRR), which showed higher consistency with the expected model than the LG data.
 
 ## Experiment 2: Do ASes advertise their prefixes selectively to their providers and peers respectively? 
 To extract the SA prefixes from the collected routing tables, run the following script with the respective year as an argument (e.g., we collect the SA prefixes for 2017):
